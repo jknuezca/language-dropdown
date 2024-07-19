@@ -1,0 +1,53 @@
+
+/* Admin CSS */
+.flag-image-container {
+    margin-bottom: 5px;
+}
+
+.flag-image-container img {
+    border: 1px solid #ddd;
+    padding: 2px;
+    background-color: #f9f9f9;
+}
+
+#language-entries input[type="text"],
+#language-entries input[type="url"] {
+    width: 100%;
+}
+
+#add-language {
+    margin-top: 10px;
+}
+
+.dashicons-move {
+    cursor: move;
+}
+
+#sortable-table td {
+    vertical-align: middle;
+}
+.flag-image-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+}
+
+.ui-sortable-helper {
+    display: table;
+    background: white !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.ui-sortable-placeholder {
+    visibility: visible !important;
+    background-color: #f9f9f9 !important;
+    border: 2px dashed #ccc;
+}
+
+#sortable-table tr {
+    transition: background-color 0.2s ease;
+}
+
+#sortable-table tr:hover {
+    background-color: #f5f5f5;
+}

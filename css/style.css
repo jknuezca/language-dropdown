@@ -1,0 +1,223 @@
+ /*---- header ----*/
+.ex-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #ffffff;
+    transition: all 0.25s ease-in-out;
+}
+
+.ex-header.sticky {
+    position: fixed;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ex-header.sticky+main {
+    margin-top: 70px;
+}
+
+.ex-navbar {
+    margin-bottom: 0.5rem;
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #4c9eea40;
+    transition: all 0.25s ease-in-out;
+}
+
+.ex-header.sticky .ex-navbar {
+    margin-bottom: 0;
+    padding: 0.75rem 0;
+    border-bottom-color: #ffffff;
+}
+
+.ex-logo {
+    width: 8rem;
+    transform: translateY(4px);
+}
+
+.ex-navbar-nav {
+    margin-left: 1rem;
+    align-items: center;
+}
+
+.ex-navbar-item+.ex-navbar-item {
+    margin-left: 0.5rem;
+}
+
+.ex-navbar-link {
+    padding: 0.5rem;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.ex-navbar-link:hover {
+    color: var(--primary);
+}
+
+.ex-switch-lang {
+    position: relative;
+}
+
+.ex-switch-lang img {
+    width: 24px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+}
+
+.ex-switch-lang-btn {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: var(--secondary);
+}
+
+.ex-switch-lang-options {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    z-index: 9;
+    padding: 0.5rem;
+    display: none;
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.1875rem 0.375rem rgb(140 152 164 / 25%);
+}
+
+.ex-switch-lang-options.active {
+    display: block;
+}
+
+/* .ex-switch-lang-options li+li {
+    margin-top: 0.25rem;
+} */
+
+.ex-switch-lang-options a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--dark-blue);
+    transition: background-color 0.25s ease;
+}
+
+.ex-switch-lang-options a.active,
+.ex-switch-lang-options a:hover {
+    background-color: rgba(189, 197, 209, 0.2);
+}
+
+.ex-switch-lang-options a img {
+    margin-right: 0.5rem;
+}
+
+.ex-switch-lang-options a i {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    opacity: 0;
+    font-size: 0.75rem;
+    color: var(--success);
+    transition: all 0.25s ease;
+}
+
+.ex-switch-lang-options a:hover i {
+    right: 0.5rem;
+    opacity: 1;
+}
+
+@media only screen and (min-width: 992px) {
+    .ex-logo {
+        transform: none;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .ex-navbar-nav {
+        margin-left: 2.5rem;
+    }
+
+    .ex-navbar-link {
+        padding: 0.5rem 1rem;
+    }
+}
+
+.ex-btn {
+    padding: 0.625rem 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #d3d8dd, 0 2px 4px #d3d8dd;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    transition: background-color 0.35s ease;
+    cursor: pointer;
+}
+
+.ex-switch-lang {
+   position: relative;
+   display: inline-block;
+}
+
+.ex-switch-lang-btn {
+   display: flex;
+   align-items: center;
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+}
+
+.ex-switch-lang-btn img {
+   width: 24px;
+   height: 24px;
+}
+
+.ex-switch-lang-options {
+   display: none;
+   position: absolute;
+   top: 100%;
+   right: 0;
+   background-color: #fff;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   padding: 0;
+   list-style-type: none;
+   z-index: 1000;
+}
+
+.ex-switch-lang-options li {
+   padding: 5px 10px 0 10px;
+   margin-bottom: 0;
+
+   &:last-child {
+      padding: 5px 10px 5px 10px;
+   }
+}
+
+.ex-switch-lang-options a {
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+   color: #333;
+}
+
+.ex-switch-lang-options a img {
+   width: 24px;
+   height: 24px;
+   margin-right: 10px;
+}
+
+.ex-switch-lang-options a.active {
+   font-weight: bold;
+}
+
+.ex-switch-lang-options a i {
+   margin-left: auto;
+}
