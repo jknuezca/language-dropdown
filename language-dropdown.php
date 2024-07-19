@@ -14,6 +14,27 @@
 // Include admin page
 require_once plugin_dir_path(__FILE__) . 'admin-page.php';
 
+// Initialize plugin
+function language_dropdown_init() {
+   if (is_multisite()) {
+      add_action('network_admin_menu', 'language_dropdown_network_admin_menu');
+   }
+   add_action('admin_menu', 'language_dropdown_admin_menu');
+}
+add_action('plugins_loaded', 'language_dropdown_init');
+
+// Network admin menu
+function language_dropdown_network_admin_menu() {
+   add_submenu_page(
+      'settings.php',
+      'Language Dropdown Network Settings',
+      'Language Dropdown',
+      'manage_network_options',
+      'language-dropdown-network-settings',
+      'language_dropdown_network_settings_page'
+   );
+}
+
 // Add shortcode
 function language_dropdown_shortcode() {
    $languages = get_option('language_dropdown_entries', array());
