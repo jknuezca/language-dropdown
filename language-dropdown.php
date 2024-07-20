@@ -189,3 +189,13 @@ function language_dropdown_compatibility_notice() {
 function language_dropdown_wp_version_notice() {
    echo '<div class="error"><p>The Language Dropdown plugin requires WordPress version 5.0 or higher. Please upgrade WordPress to use this plugin.</p></div>';
 }
+
+// New blog creation in multisite
+function language_dropdown_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta) {
+   if (is_plugin_active_for_network('language-dropdown/language-dropdown.php')) {
+      switch_to_blog($blog_id);
+      language_dropdown_single_activate();
+      restore_current_blog();
+   }
+}
+add_action('wpmu_new_blog', 'language_dropdown_new_blog', 10, 6);
