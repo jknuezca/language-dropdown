@@ -219,9 +219,11 @@ function language_dropdown_settings_page() {
    ?>
    <div class="wrap">
       <h1>Language Dropdown Settings</h1>
+
       <?php if (is_multisite()): ?>
          <p>These settings are specific to this site. For network-wide settings, please visit the network admin page.</p>
       <?php endif; ?>
+      
       <form method="post" action="">
          <table class="wp-list-table widefat fixed striped" id="sortable-table">
             <colgroup>
