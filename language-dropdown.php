@@ -143,7 +143,16 @@ register_activation_hook(__FILE__, 'language_dropdown_activate');
 
 // Deactivation hook
 function language_dropdown_deactivate() {
-   // Cleanup tasks if needed
+   if (is_multisite() && $network_wide) {
+      global $wpdb;
+      foreach ($wpdb->get_col("SELECT blog_id FROM $wpdb->blogs") as $blog_id) {
+         switch_to_blog($blog_id);
+         language_dropdown_single_deactivate();
+         restore_current_blog();
+      }
+   } else {
+      language_dropdown_single_deactivate();
+   }
 }
 register_deactivation_hook(__FILE__, 'language_dropdown_deactivate');
 
