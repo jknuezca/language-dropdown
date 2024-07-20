@@ -156,6 +156,11 @@ function language_dropdown_deactivate() {
 }
 register_deactivation_hook(__FILE__, 'language_dropdown_deactivate');
 
+function language_dropdown_single_deactivate() {
+   delete_option('language_dropdown_entries');
+}
+register_deactivation_hook(__FILE__, 'language_dropdown_deactivate');
+
 function language_dropdown_compatibility_check() {
    $incompatible_plugins = array(
       'incompatible-plugin-1/incompatible-plugin-1.php',
