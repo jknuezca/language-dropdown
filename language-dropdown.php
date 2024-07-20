@@ -48,7 +48,7 @@ function language_dropdown_get_option($option_name) {
 
 // Add shortcode
 function language_dropdown_shortcode() {
-   $languages = get_option('language_dropdown_entries', array());
+   $languages = language_dropdown_get_option('entries');
    
    if (empty($languages)) {
       return ''; // Return empty if no languages are set
@@ -113,8 +113,20 @@ $plugin = plugin_basename(__FILE__);
 add_filter("plugin_action_links_$plugin", 'language_dropdown_settings_link');
 
 // Activation hook
-function language_dropdown_activate() {
-   // Add default options if they don't exist
+function language_dropdown_activate($network_wide) {
+   if (is_multisite() && $network_wide) {
+      global $wpdb;
+      foreach ($wpdb->get_col("SELECT blog_id FROM $wpdb->blogs") as $blog_id) {
+         switch_to_blog($blog_id);
+         language_dropdown_single_activate();
+         restore_current_blog();
+      }
+   } else {
+      language_dropdown_single_activate();
+   }
+}
+
+function language_dropdown_single_activate() {
    if (!get_option('language_dropdown_entries')) {
       $default_languages = array(
          array(
