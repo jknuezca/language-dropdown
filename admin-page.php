@@ -223,7 +223,7 @@ function language_dropdown_settings_page() {
       <?php if (is_multisite()): ?>
          <p>These settings are specific to this site. For network-wide settings, please visit the network admin page.</p>
       <?php endif; ?>
-      
+
       <form method="post" action="">
          <table class="wp-list-table widefat fixed striped" id="sortable-table">
             <colgroup>
@@ -370,7 +370,7 @@ function language_dropdown_settings_page() {
 
 // Enqueue admin scripts and styles
 function language_dropdown_admin_enqueue_scripts($hook) {
-   if ($hook != 'settings_page_language-dropdown-settings') {
+   if ($hook != 'settings_page_language-dropdown-settings' && $hook != 'settings_page_language-dropdown-network-settings') {
       return;
    }
    wp_enqueue_style('language-dropdown-admin-style', plugin_dir_url(__FILE__) . 'css/admin-style.css');
