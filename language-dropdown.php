@@ -35,6 +35,17 @@ function language_dropdown_network_admin_menu() {
    );
 }
 
+// Option retrieval function
+function language_dropdown_get_option($option_name) {
+   if (is_multisite()) {
+      $network_value = get_site_option("language_dropdown_network_$option_name");
+      if ($network_value !== false) {
+         return $network_value;
+      }
+   }
+   return get_option("language_dropdown_$option_name");
+}
+
 // Add shortcode
 function language_dropdown_shortcode() {
    $languages = get_option('language_dropdown_entries', array());
